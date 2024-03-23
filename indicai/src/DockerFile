@@ -7,5 +7,5 @@ RUN apt-get install maven -y
 RUN mvn clean install
 FROM openjdk:17-jdk-slim
 EXPOSE 8080
-COPY --from=build target\test-classes\com\indicai\indicai\IndicaiApplicationTests.class
+COPY --from=build target\test-classes\com\indicai\indicai\IndicaiApplicationTests.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
