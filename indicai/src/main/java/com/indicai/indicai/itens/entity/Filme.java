@@ -3,8 +3,9 @@ package com.indicai.indicai.itens.entity;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 
+
 @Entity
-@Table(name="filme")
+@Table(name="filmes")
 public class Filme {
   @Id 
   @GeneratedValue
@@ -30,7 +31,7 @@ public class Filme {
     this.nota = nota;
 }
 
-  public long getId() {
+public long getId() {
     return id;
 }
 
