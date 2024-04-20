@@ -1,12 +1,15 @@
 package com.indicai.indicai.itens.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 @Entity
-@Table(name="filmes")
-public class Filme {
+@Table(name="series")
+public class Serie {
+
     @Id 
     @GeneratedValue
     private long id;
@@ -14,21 +17,18 @@ public class Filme {
     private String diretor;
     private String elencoPrincipal;
     private String pais;
-    private String anoLancamento;
-    private float nota;
+    private int anoLancamento;
+    private int numeroTemporadas;
 
-    public Filme() {
-    }
-
-    public Filme(long id, String titulo, String diretor, String elencoPrincipal, String pais, String anoLancamento,
-        float nota) {
+    public Serie(long id, String titulo, String diretor, String elencoPrincipal, String pais, int anoLancamento,
+            int numeroTemporadas) {
         this.id = id;
         this.titulo = titulo;
         this.diretor = diretor;
         this.elencoPrincipal = elencoPrincipal;
         this.pais = pais;
         this.anoLancamento = anoLancamento;
-        this.nota = nota;
+        this.numeroTemporadas = numeroTemporadas;
     }
 
     public long getId() {
@@ -71,26 +71,27 @@ public class Filme {
         this.pais = pais;
     }
 
-    public String getAnoLancamento() {
+    public int getAnoLancamento() {
         return anoLancamento;
     }
 
-    public void setAnoLancamento(String anoLancamento) {
+    public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
 
-    public float getNota() {
-        return nota;
+    public int getNumeroTemporadas() {
+        return numeroTemporadas;
     }
 
-    public void setNota(float nota) {
-        this.nota = nota;
+    public void setNumeroTemporadas(int numeroTemporadas) {
+        this.numeroTemporadas = numeroTemporadas;
     }
 
     @Override
     public String toString() {
-        return "Filme [id=" + id + ", titulo=" + titulo + ", diretor=" + diretor + ", elencoPrincipal=" + elencoPrincipal
-                + ", pais=" + pais + ", anoLancamento=" + anoLancamento + ", nota=" + nota + "]";
+        return "Serie [id=" + id + ", titulo=" + titulo + ", diretor=" + diretor + ", elencoPrincipal="
+                + elencoPrincipal + ", pais=" + pais + ", anoLancamento=" + anoLancamento + ", numeroTemporadas="
+                + numeroTemporadas + "]";
     }
- 
+
 }
