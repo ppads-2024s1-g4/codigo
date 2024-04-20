@@ -1,4 +1,4 @@
-name: Deploy Application Spring
+name: Deploy Application Docker
 
 on:
     push:
@@ -8,5 +8,30 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-        -   name: Checkout code
-            uses: actions/checkout@v3
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup Java
+              uses: actions/setup-java@v3
+              with:
+                distribution: 'temurin'
+                java-version: '17'
+            - name: Build project
+              run: mvn clean install -DskipTests
+            - name: Login Docker Hub
+              run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+            - name: Build docker image
+              run: docker build -t jeffersoncdantas/indicai .
+            - name: Push image docker
+              run: docker push jeffersoncdantas/indicai
+              
+    deploy:
+        needs: build
+        runs-on: self-hosted
+        steps:
+            - name: Pull image from docker hub
+              run: docker pull jeffersoncdantas/indicai:latest
+            - name: Remove docker container
+              run: docker rm -f indicai
+            - name: Run docker container
+              run: docker run -d -p 25000:25000 --name indicai jeffersoncdantas/indicai
