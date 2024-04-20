@@ -17,6 +17,10 @@ public class Livro {
     private String pais;
     private int anoLancamento;
 
+    public Livro(){
+        
+    }
+
     public Livro(long id, String titulo, String autores, String editora, String pais, int anoLancamento) {
         this.id = id;
         this.titulo = titulo;
