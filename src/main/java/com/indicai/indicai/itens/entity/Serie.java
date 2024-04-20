@@ -22,6 +22,7 @@ public class Serie {
 
     public Serie(){
         
+
     }
 
     public Serie(long id, String titulo, String diretor, String elencoPrincipal, String pais, int anoLancamento,
