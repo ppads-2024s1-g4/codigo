@@ -20,6 +20,10 @@ public class Serie {
     private int anoLancamento;
     private int numeroTemporadas;
 
+    public Serie(){
+        
+    }
+
     public Serie(long id, String titulo, String diretor, String elencoPrincipal, String pais, int anoLancamento,
             int numeroTemporadas) {
         this.id = id;
