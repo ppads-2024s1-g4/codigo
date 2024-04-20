@@ -21,7 +21,6 @@ public class Serie {
     private int numeroTemporadas;
 
     public Serie(){
-        
 
     }
 
