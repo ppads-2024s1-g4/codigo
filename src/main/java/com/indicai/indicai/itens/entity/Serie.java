@@ -12,12 +12,12 @@ public class Serie {
 
     @Id 
     @GeneratedValue
-    private long id;
-    private String titulo;
+    //private long id;
+    //private String titulo;
     private String diretor;
     private String elencoPrincipal;
-    private String pais;
-    private int anoLancamento;
+    //private String pais;
+    //private int anoLancamento;
     private int numeroTemporadas;
 
     public Serie(){

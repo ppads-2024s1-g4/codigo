@@ -16,4 +16,46 @@ public class Item {
     private String titulo;
     private String pais;
     private String anoLancamento;
+
+    public Item(){
+
+    }
+
+    
+
+    public Item(long id, String titulo, String pais, String anoLancamento) {
+        this.id = id;
+        this.titulo = titulo;
+        this.pais = pais;
+        this.anoLancamento = anoLancamento;
+    }
+
+
+
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public String getTitulo() {
+        return titulo;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public String getPais() {
+        return pais;
+    }
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    public String getAnoLancamento() {
+        return anoLancamento;
+    }
+    public void setAnoLancamento(String anoLancamento) {
+        this.anoLancamento = anoLancamento;
+    }
+
+    
 }

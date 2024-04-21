@@ -10,15 +10,15 @@ import jakarta.persistence.Table;
 public class Livro {
     @Id 
     @GeneratedValue
-    private long id;
-    private String titulo;
+    //private long id;
+    //private String titulo;
     private String autores;
     private String editora;
-    private String pais;
-    private int anoLancamento;
+    //private String pais;
+    //private int anoLancamento;
 
     public Livro(){
-        
+
     }
 
     public Livro(long id, String titulo, String autores, String editora, String pais, int anoLancamento) {
