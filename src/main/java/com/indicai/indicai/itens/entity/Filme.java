@@ -6,45 +6,23 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="filmes")
-public class Filme {
+public class Filme extends Item {
     @Id 
     @GeneratedValue
-    private long id;
-    private String titulo;
+    //private long id;
+    //private String titulo;
     private String diretor;
     private String elencoPrincipal;
-    private String pais;
-    private String anoLancamento;
-    private float nota;
+    //private String pais;
+    //private String anoLancamento;
 
     public Filme() {
     }
 
-    public Filme(long id, String titulo, String diretor, String elencoPrincipal, String pais, String anoLancamento,
-        float nota) {
-        this.id = id;
-        this.titulo = titulo;
+    public Filme(String diretor, String elencoPrincipal, long id, String titulo, String pais, String anoLancamento) {
+        super(id, titulo, pais, anoLancamento);
         this.diretor = diretor;
         this.elencoPrincipal = elencoPrincipal;
-        this.pais = pais;
-        this.anoLancamento = anoLancamento;
-        this.nota = nota;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getDiretor() {
@@ -63,34 +41,8 @@ public class Filme {
         this.elencoPrincipal = elencoPrincipal;
     }
 
-    public String getPais() {
-        return pais;
-    }
+    
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(String anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
-
-    public float getNota() {
-        return nota;
-    }
-
-    public void setNota(float nota) {
-        this.nota = nota;
-    }
-
-    @Override
-    public String toString() {
-        return "Filme [id=" + id + ", titulo=" + titulo + ", diretor=" + diretor + ", elencoPrincipal=" + elencoPrincipal
-                + ", pais=" + pais + ", anoLancamento=" + anoLancamento + ", nota=" + nota + "]";
-    }
+    
  
 }
