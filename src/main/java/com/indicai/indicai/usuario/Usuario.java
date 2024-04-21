@@ -2,6 +2,7 @@ package com.indicai.indicai.usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -12,8 +13,8 @@ import com.indicai.indicai.avaliacao.Avaliacao;
 @Table(name="usuarios")
 public class Usuario {
     @Id 
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String username;
     private int anoNascimento;
     private String cidade;

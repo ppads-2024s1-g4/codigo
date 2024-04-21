@@ -5,6 +5,7 @@ import com.indicai.indicai.avaliacao.Avaliacao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -13,8 +14,8 @@ import jakarta.persistence.Table;
 @Table(name="filmes")
 public class Filme{
     @Id 
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String titulo;
     private String pais;
     private int anoLancamento;
@@ -27,20 +28,22 @@ public class Filme{
     public Filme() {
     }
 
-	public Filme(long id, String titulo, String pais, int anoLancamento, String diretor, String elencoPrincipal) {
+	public Filme(Long id, String titulo, String pais, int anoLancamento, String diretor, String elencoPrincipal,
+			List<Avaliacao> avaliacoes) {
 		this.id = id;
 		this.titulo = titulo;
 		this.pais = pais;
 		this.anoLancamento = anoLancamento;
 		this.diretor = diretor;
 		this.elencoPrincipal = elencoPrincipal;
+		this.avaliacoes = avaliacoes;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

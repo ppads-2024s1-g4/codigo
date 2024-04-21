@@ -6,6 +6,7 @@ import com.indicai.indicai.avaliacao.Avaliacao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -14,8 +15,8 @@ import jakarta.persistence.Table;
 @Table(name="livros")
 public class Livro {
     @Id 
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String titulo;
     private String pais;
     private int anoLancamento;
