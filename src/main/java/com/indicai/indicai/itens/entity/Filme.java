@@ -36,7 +36,6 @@ public class Filme{
 		this.anoLancamento = anoLancamento;
 		this.diretor = diretor;
 		this.elencoPrincipal = elencoPrincipal;
-		this.avaliacoes = avaliacoes;
 	}
 
 	public Long getId() {

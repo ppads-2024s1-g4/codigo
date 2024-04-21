@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -24,25 +25,28 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Avaliacao> avaliacoes;
 
+    @ManyToMany
+    private List<Usuario> amigos;
 
     public Usuario(){
 
     }
 
-    public Usuario(long id, String username, int anoNascimento, String cidade, String estado) {
+    public Usuario(Long id, String username, int anoNascimento, String cidade, String estado, boolean isGerente,
+            List<Avaliacao> avaliacoes) {
         this.id = id;
         this.username = username;
         this.anoNascimento = anoNascimento;
         this.cidade = cidade;
         this.estado = estado;
-        this.isGerente = false;
+        this.isGerente = isGerente;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -86,10 +90,28 @@ public class Usuario {
         this.isGerente = isGerente;
     }
 
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
+
+    public void adicionarAmigo(Usuario amigo) {
+        amigos.add(amigo);
+    }
+
+    public void adicionarAvaliacao(Avaliacao avaliacao) {
+        avaliacoes.add(avaliacao);
+    }
+
     @Override
     public String toString() {
         return "Usuario [id=" + id + ", username=" + username + ", anoNascimento=" + anoNascimento + ", cidade="
-                + cidade + ", estado=" + estado + ", isGerente=" + isGerente + "]";
+                + cidade + ", estado=" + estado + ", isGerente=" + isGerente + ", avaliacoes=" + avaliacoes + "]";
     }
+
+    
 
 }

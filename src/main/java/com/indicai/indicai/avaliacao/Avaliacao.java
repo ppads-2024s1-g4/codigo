@@ -1,5 +1,8 @@
 package com.indicai.indicai.avaliacao;
 
+import java.util.List;
+
+import com.indicai.indicai.comentario.Comentario;
 import com.indicai.indicai.itens.entity.Filme;
 import com.indicai.indicai.itens.entity.Livro;
 import com.indicai.indicai.itens.entity.Serie;
@@ -9,8 +12,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,29 +26,30 @@ public class Avaliacao {
     private String comentario;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+	@OneToMany(mappedBy = "avaliacao")
+	private List<Comentario> comentarios;
+
     @ManyToOne
-    @JoinColumn(name = "filme_id")
+    //@JoinColumn(name = "filme_id")
     private Filme filme;
 
     @ManyToOne
-    @JoinColumn(name = "livro_id")
+    // @JoinColumn(name = "livro_id")
     private Livro livro;
 
     @ManyToOne
-    @JoinColumn(name = "serie_id")
+    // @JoinColumn(name = "serie_id")
     private Serie serie;
 
-	public Avaliacao(Long id, int nota, String comentario, Usuario usuario, Filme filme, Livro livro, Serie serie) {
+	public Avaliacao() {}
+
+	public Avaliacao(Long id, int nota, String comentario, Usuario usuario) {
 		this.id = id;
 		this.nota = nota;
 		this.comentario = comentario;
 		this.usuario = usuario;
-		this.filme = filme;
-		this.livro = livro;
-		this.serie = serie;
 	}
 
 	public Long getId() {
@@ -80,34 +84,12 @@ public class Avaliacao {
 		this.usuario = usuario;
 	}
 
-	public Filme getFilme() {
-		return filme;
+	public List<Comentario> getComentarios() {
+		return comentarios;
 	}
 
-	public void setFilme(Filme filme) {
-		this.filme = filme;
-	}
-
-	public Livro getLivro() {
-		return livro;
-	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-	}
-
-	public Serie getSerie() {
-		return serie;
-	}
-
-	public void setSerie(Serie serie) {
-		this.serie = serie;
-	}
-
-	@Override
-	public String toString() {
-		return "Avaliacao [id=" + id + ", nota=" + nota + ", comentario=" + comentario + ", usuario=" + usuario
-				+ ", filme=" + filme + ", livro=" + livro + ", serie=" + serie + "]";
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 }

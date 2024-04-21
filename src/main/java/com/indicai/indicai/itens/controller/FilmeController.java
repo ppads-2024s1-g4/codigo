@@ -53,7 +53,6 @@ public class FilmeController {
     } throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Erro ao alterar dados do filme com id" + filmeId);
   }
 
-    
   @DeleteMapping(value = "/filmes/{id}")
   public void deleteFilme(@PathVariable long id){
     if(repository.findById(id) == null){

@@ -44,7 +44,7 @@ public class UsuarioController {
   }
 
   @PutMapping("/usuarios/{usuarioId}")
-  public Optional<Usuario> updateSerie(@RequestBody Usuario usuario, @PathVariable(value= "usuarioId") long usuarioId){
+  public Optional<Usuario> updateUsuario(@RequestBody Usuario usuario, @PathVariable(value= "usuarioId") long usuarioId){
     Optional<Usuario> opt = this.getUsuario(usuarioId);
     if (opt.isPresent() && opt.get().getId() == usuario.getId()){
       return Optional.of(repository.save(usuario));
