@@ -3,7 +3,10 @@ package com.indicai.indicai.usuario;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
+import com.indicai.indicai.avaliacao.Avaliacao;
 
 @Entity
 @Table(name="usuarios")
@@ -16,6 +19,10 @@ public class Usuario {
     private String cidade;
     private String estado;
     private boolean isGerente;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Avaliacao> avaliacoes;
+
 
     public Usuario(){
 

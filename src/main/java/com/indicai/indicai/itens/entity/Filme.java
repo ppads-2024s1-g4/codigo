@@ -1,7 +1,12 @@
 package com.indicai.indicai.itens.entity;
+import java.util.List;
+
+import com.indicai.indicai.avaliacao.Avaliacao;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,8 +21,20 @@ public class Filme{
     private String diretor;
     private String elencoPrincipal;
 
+    @OneToMany(mappedBy = "filme")
+    private List<Avaliacao> avaliacoes;
+
     public Filme() {
     }
+
+	public Filme(long id, String titulo, String pais, int anoLancamento, String diretor, String elencoPrincipal) {
+		this.id = id;
+		this.titulo = titulo;
+		this.pais = pais;
+		this.anoLancamento = anoLancamento;
+		this.diretor = diretor;
+		this.elencoPrincipal = elencoPrincipal;
+	}
 
 	public long getId() {
 		return id;
@@ -67,19 +84,18 @@ public class Filme{
 		this.elencoPrincipal = elencoPrincipal;
 	}
 
-	public Filme(long id, String titulo, String pais, int anoLancamento, String diretor, String elencoPrincipal) {
-		this.id = id;
-		this.titulo = titulo;
-		this.pais = pais;
-		this.anoLancamento = anoLancamento;
-		this.diretor = diretor;
-		this.elencoPrincipal = elencoPrincipal;
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 
 	@Override
 	public String toString() {
 		return "Filme [id=" + id + ", titulo=" + titulo + ", pais=" + pais + ", anoLancamento=" + anoLancamento
-				+ ", diretor=" + diretor + ", elencoPrincipal=" + elencoPrincipal + "]";
+				+ ", diretor=" + diretor + ", elencoPrincipal=" + elencoPrincipal + ", avaliacoes=" + avaliacoes + "]";
 	}
 
 }
