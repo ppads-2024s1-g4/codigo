@@ -7,43 +7,25 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="livros")
-public class Livro {
+public class Livro extends Item {
     @Id 
     @GeneratedValue
     //private long id;
     //private String titulo;
-    private String autores;
-    private String editora;
     //private String pais;
     //private int anoLancamento;
+    private String autores;
+    private String editora;
+    
 
     public Livro(){
 
     }
 
-    public Livro(long id, String titulo, String autores, String editora, String pais, int anoLancamento) {
-        this.id = id;
-        this.titulo = titulo;
+    public Livro(long id, String titulo, String pais, String anoLancamento, String autores, String editora) {
+        super(id, titulo, pais, anoLancamento);
         this.autores = autores;
         this.editora = editora;
-        this.pais = pais;
-        this.anoLancamento = anoLancamento;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getAutores() {
@@ -62,26 +44,16 @@ public class Livro {
         this.editora = editora;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public int getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(int anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
-
     @Override
     public String toString() {
-        return "Livro [id=" + id + ", titulo=" + titulo + ", autores=" + autores + ", editora=" + editora + ", pais="
-                + pais + ", anoLancamento=" + anoLancamento + "]";
+        return "Livro[" +
+                "id=" + getId() +
+                ", titulo=" + getTitulo() +
+                ", pais=" + getPais() +
+                ", anoLancamento=" + getAnoLancamento() +
+                ", autores=" + autores +
+                ", editora=" + editora +
+                "]";
     }
-  
+
 }

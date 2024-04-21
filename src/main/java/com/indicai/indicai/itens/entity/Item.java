@@ -21,16 +21,12 @@ public class Item {
 
     }
 
-    
-
     public Item(long id, String titulo, String pais, String anoLancamento) {
         this.id = id;
         this.titulo = titulo;
         this.pais = pais;
         this.anoLancamento = anoLancamento;
     }
-
-
 
     public long getId() {
         return id;
@@ -57,5 +53,11 @@ public class Item {
         this.anoLancamento = anoLancamento;
     }
 
+    @Override
+    public String toString() {
+        return "Item [id=" + id + ", titulo=" + titulo + ", pais=" + pais + ", anoLancamento=" + anoLancamento + "]";
+    }
+
     
+
 }

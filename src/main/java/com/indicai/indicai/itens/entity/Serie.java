@@ -8,47 +8,28 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="series")
-public class Serie {
+public class Serie extends Item {
 
     @Id 
     @GeneratedValue
     //private long id;
     //private String titulo;
-    private String diretor;
-    private String elencoPrincipal;
     //private String pais;
     //private int anoLancamento;
+    private String diretor;
+    private String elencoPrincipal;
     private int numeroTemporadas;
-
+    
     public Serie(){
 
     }
 
-    public Serie(long id, String titulo, String diretor, String elencoPrincipal, String pais, int anoLancamento,
+    public Serie(long id, String titulo, String pais, String anoLancamento, String diretor, String elencoPrincipal,
             int numeroTemporadas) {
-        this.id = id;
-        this.titulo = titulo;
+        super(id, titulo, pais, anoLancamento);
         this.diretor = diretor;
         this.elencoPrincipal = elencoPrincipal;
-        this.pais = pais;
-        this.anoLancamento = anoLancamento;
         this.numeroTemporadas = numeroTemporadas;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getDiretor() {
@@ -67,22 +48,6 @@ public class Serie {
         this.elencoPrincipal = elencoPrincipal;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public int getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(int anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
-
     public int getNumeroTemporadas() {
         return numeroTemporadas;
     }
@@ -93,9 +58,16 @@ public class Serie {
 
     @Override
     public String toString() {
-        return "Serie [id=" + id + ", titulo=" + titulo + ", diretor=" + diretor + ", elencoPrincipal="
-                + elencoPrincipal + ", pais=" + pais + ", anoLancamento=" + anoLancamento + ", numeroTemporadas="
-                + numeroTemporadas + "]";
+        return "Serie[" +
+                "id=" + getId() +
+                ", titulo=" + getTitulo() +
+                ", pais=" + getPais() +
+                ", anoLancamento=" + getAnoLancamento() +
+                ", diretor=" + diretor +
+                ", elencoPrincipal=" + elencoPrincipal +
+                ", numeroTemporadas=" + numeroTemporadas +
+                "]";
     }
+    
 
 }

@@ -11,19 +11,21 @@ public class Filme extends Item {
     @GeneratedValue
     //private long id;
     //private String titulo;
+    //private String pais;
+    //private int anoLancamento;
     private String diretor;
     private String elencoPrincipal;
-    //private String pais;
-    //private String anoLancamento;
 
     public Filme() {
     }
 
-    public Filme(String diretor, String elencoPrincipal, long id, String titulo, String pais, String anoLancamento) {
+    public Filme(long id, String titulo, String pais, String anoLancamento, String diretor, String elencoPrincipal) {
         super(id, titulo, pais, anoLancamento);
         this.diretor = diretor;
         this.elencoPrincipal = elencoPrincipal;
     }
+
+    
 
     public String getDiretor() {
         return diretor;
@@ -41,8 +43,16 @@ public class Filme extends Item {
         this.elencoPrincipal = elencoPrincipal;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Filme[" +
+                "id=" + getId() +
+                ", titulo='" + getTitulo() +
+                ", pais='" + getPais() +
+                ", anoLancamento='" + getAnoLancamento() +
+                ", diretor='" + diretor +
+                ", elencoPrincipal='" + elencoPrincipal +
+                "]";
+    }
 
-    
- 
 }
