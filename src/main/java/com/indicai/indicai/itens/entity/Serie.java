@@ -8,14 +8,14 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="series")
-public class Serie extends Item {
+public class Serie{
 
     @Id 
     @GeneratedValue
-    //private long id;
-    //private String titulo;
-    //private String pais;
-    //private int anoLancamento;
+    private long id;
+    private String titulo;
+    private String pais;
+    private int anoLancamento;
     private String diretor;
     private String elencoPrincipal;
     private int numeroTemporadas;
@@ -24,50 +24,77 @@ public class Serie extends Item {
 
     }
 
-    public Serie(long id, String titulo, String pais, String anoLancamento, String diretor, String elencoPrincipal,
-            int numeroTemporadas) {
-        super(id, titulo, pais, anoLancamento);
-        this.diretor = diretor;
-        this.elencoPrincipal = elencoPrincipal;
-        this.numeroTemporadas = numeroTemporadas;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public String getDiretor() {
-        return diretor;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setDiretor(String diretor) {
-        this.diretor = diretor;
-    }
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public String getElencoPrincipal() {
-        return elencoPrincipal;
-    }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public void setElencoPrincipal(String elencoPrincipal) {
-        this.elencoPrincipal = elencoPrincipal;
-    }
+	public String getPais() {
+		return pais;
+	}
 
-    public int getNumeroTemporadas() {
-        return numeroTemporadas;
-    }
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
 
-    public void setNumeroTemporadas(int numeroTemporadas) {
-        this.numeroTemporadas = numeroTemporadas;
-    }
+	public int getAnoLancamento() {
+		return anoLancamento;
+	}
 
-    @Override
-    public String toString() {
-        return "Serie[" +
-                "id=" + getId() +
-                ", titulo=" + getTitulo() +
-                ", pais=" + getPais() +
-                ", anoLancamento=" + getAnoLancamento() +
-                ", diretor=" + diretor +
-                ", elencoPrincipal=" + elencoPrincipal +
-                ", numeroTemporadas=" + numeroTemporadas +
-                "]";
-    }
-    
+	public void setAnoLancamento(int anoLancamento) {
+		this.anoLancamento = anoLancamento;
+	}
 
+	public String getDiretor() {
+		return diretor;
+	}
+
+	public void setDiretor(String diretor) {
+		this.diretor = diretor;
+	}
+
+	public String getElencoPrincipal() {
+		return elencoPrincipal;
+	}
+
+	public void setElencoPrincipal(String elencoPrincipal) {
+		this.elencoPrincipal = elencoPrincipal;
+	}
+
+	public int getNumeroTemporadas() {
+		return numeroTemporadas;
+	}
+
+	public void setNumeroTemporadas(int numeroTemporadas) {
+		this.numeroTemporadas = numeroTemporadas;
+	}
+
+	public Serie(long id, String titulo, String pais, int anoLancamento, String diretor, String elencoPrincipal,
+			int numeroTemporadas) {
+		this.id = id;
+		this.titulo = titulo;
+		this.pais = pais;
+		this.anoLancamento = anoLancamento;
+		this.diretor = diretor;
+		this.elencoPrincipal = elencoPrincipal;
+		this.numeroTemporadas = numeroTemporadas;
+	}
+
+	@Override
+	public String toString() {
+		return "Serie [id=" + id + ", titulo=" + titulo + ", pais=" + pais + ", anoLancamento=" + anoLancamento
+				+ ", diretor=" + diretor + ", elencoPrincipal=" + elencoPrincipal + ", numeroTemporadas="
+				+ numeroTemporadas + "]";
+	}
 }

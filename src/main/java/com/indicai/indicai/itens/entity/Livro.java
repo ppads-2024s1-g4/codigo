@@ -7,13 +7,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="livros")
-public class Livro extends Item {
+public class Livro {
     @Id 
     @GeneratedValue
-    //private long id;
-    //private String titulo;
-    //private String pais;
-    //private int anoLancamento;
+    private long id;
+    private String titulo;
+    private String pais;
+    private int anoLancamento;
     private String autores;
     private String editora;
     
@@ -22,38 +22,81 @@ public class Livro extends Item {
 
     }
 
-    public Livro(long id, String titulo, String pais, String anoLancamento, String autores, String editora) {
-        super(id, titulo, pais, anoLancamento);
-        this.autores = autores;
-        this.editora = editora;
-    }
 
-    public String getAutores() {
-        return autores;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setAutores(String autores) {
-        this.autores = autores;
-    }
 
-    public String getEditora() {
-        return editora;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
 
-    @Override
-    public String toString() {
-        return "Livro[" +
-                "id=" + getId() +
-                ", titulo=" + getTitulo() +
-                ", pais=" + getPais() +
-                ", anoLancamento=" + getAnoLancamento() +
-                ", autores=" + autores +
-                ", editora=" + editora +
-                "]";
-    }
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public String getPais() {
+		return pais;
+	}
+
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+
+	public int getAnoLancamento() {
+		return anoLancamento;
+	}
+
+
+	public void setAnoLancamento(int anoLancamento) {
+		this.anoLancamento = anoLancamento;
+	}
+
+
+	public String getAutores() {
+		return autores;
+	}
+
+
+	public void setAutores(String autores) {
+		this.autores = autores;
+	}
+
+
+	public String getEditora() {
+		return editora;
+	}
+
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+
+
+	public Livro(long id, String titulo, String pais, int anoLancamento, String autores, String editora) {
+		this.id = id;
+		this.titulo = titulo;
+		this.pais = pais;
+		this.anoLancamento = anoLancamento;
+		this.autores = autores;
+		this.editora = editora;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Livro [id=" + id + ", titulo=" + titulo + ", pais=" + pais + ", anoLancamento=" + anoLancamento
+				+ ", autores=" + autores + ", editora=" + editora + "]";
+	}
 
 }

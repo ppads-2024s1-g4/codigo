@@ -6,53 +6,80 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="filmes")
-public class Filme extends Item {
+public class Filme{
     @Id 
     @GeneratedValue
-    //private long id;
-    //private String titulo;
-    //private String pais;
-    //private int anoLancamento;
+    private long id;
+    private String titulo;
+    private String pais;
+    private int anoLancamento;
     private String diretor;
     private String elencoPrincipal;
 
     public Filme() {
     }
 
-    public Filme(long id, String titulo, String pais, String anoLancamento, String diretor, String elencoPrincipal) {
-        super(id, titulo, pais, anoLancamento);
-        this.diretor = diretor;
-        this.elencoPrincipal = elencoPrincipal;
-    }
+	public long getId() {
+		return id;
+	}
 
-    
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public String getDiretor() {
-        return diretor;
-    }
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public void setDiretor(String diretor) {
-        this.diretor = diretor;
-    }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public String getElencoPrincipal() {
-        return elencoPrincipal;
-    }
+	public String getPais() {
+		return pais;
+	}
 
-    public void setElencoPrincipal(String elencoPrincipal) {
-        this.elencoPrincipal = elencoPrincipal;
-    }
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
 
-    @Override
-    public String toString() {
-        return "Filme[" +
-                "id=" + getId() +
-                ", titulo='" + getTitulo() +
-                ", pais='" + getPais() +
-                ", anoLancamento='" + getAnoLancamento() +
-                ", diretor='" + diretor +
-                ", elencoPrincipal='" + elencoPrincipal +
-                "]";
-    }
+	public int getAnoLancamento() {
+		return anoLancamento;
+	}
+
+	public void setAnoLancamento(int anoLancamento) {
+		this.anoLancamento = anoLancamento;
+	}
+
+	public String getDiretor() {
+		return diretor;
+	}
+
+	public void setDiretor(String diretor) {
+		this.diretor = diretor;
+	}
+
+	public String getElencoPrincipal() {
+		return elencoPrincipal;
+	}
+
+	public void setElencoPrincipal(String elencoPrincipal) {
+		this.elencoPrincipal = elencoPrincipal;
+	}
+
+	public Filme(long id, String titulo, String pais, int anoLancamento, String diretor, String elencoPrincipal) {
+		this.id = id;
+		this.titulo = titulo;
+		this.pais = pais;
+		this.anoLancamento = anoLancamento;
+		this.diretor = diretor;
+		this.elencoPrincipal = elencoPrincipal;
+	}
+
+	@Override
+	public String toString() {
+		return "Filme [id=" + id + ", titulo=" + titulo + ", pais=" + pais + ", anoLancamento=" + anoLancamento
+				+ ", diretor=" + diretor + ", elencoPrincipal=" + elencoPrincipal + "]";
+	}
 
 }
