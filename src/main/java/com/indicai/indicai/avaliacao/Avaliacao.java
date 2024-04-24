@@ -1,11 +1,6 @@
 package com.indicai.indicai.avaliacao;
 
-import java.util.List;
-
-import com.indicai.indicai.comentario.Comentario;
-import com.indicai.indicai.itens.entity.Filme;
-import com.indicai.indicai.itens.entity.Livro;
-import com.indicai.indicai.itens.entity.Serie;
+import com.indicai.indicai.itens.entity.Item;
 import com.indicai.indicai.usuario.Usuario;
 
 import jakarta.persistence.Entity;
@@ -13,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,28 +22,15 @@ public class Avaliacao {
     @ManyToOne
     private Usuario usuario;
 
-	@OneToMany(mappedBy = "avaliacao")
-	private List<Comentario> comentarios;
-
     @ManyToOne
-    //@JoinColumn(name = "filme_id")
-    private Filme filme;
-
-    @ManyToOne
-    // @JoinColumn(name = "livro_id")
-    private Livro livro;
-
-    @ManyToOne
-    // @JoinColumn(name = "serie_id")
-    private Serie serie;
+    private Item item;
 
 	public Avaliacao() {}
 
-	public Avaliacao(Long id, int nota, String comentario, Usuario usuario) {
+	public Avaliacao(Long id, int nota, String comentario) {
 		this.id = id;
 		this.nota = nota;
 		this.comentario = comentario;
-		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -84,12 +65,11 @@ public class Avaliacao {
 		this.usuario = usuario;
 	}
 
-	public List<Comentario> getComentarios() {
-		return comentarios;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
+	public void setItem(Item item) {
+		this.item = item;
 	}
-
 }
