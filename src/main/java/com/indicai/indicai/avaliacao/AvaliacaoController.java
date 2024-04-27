@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.indicai.indicai.itens.entity.Filme;
+import com.indicai.indicai.itens.entity.Livro;
+import com.indicai.indicai.itens.entity.Serie;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -38,11 +41,6 @@ public class AvaliacaoController {
       } throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Erro ao buscar avaliacao com id " + id);
   } 
 
-  @PostMapping("/avaliacoes")
-  public Avaliacao postavaliacao(@RequestBody Avaliacao avaliacao) {
-      return repository.save(avaliacao);
-  }
-
   @PutMapping("/avaliacoes/{avaliacaoId}")
   public Optional<Avaliacao> updateAvaliacao(@RequestBody Avaliacao avaliacao, @PathVariable(value= "avaliacaoId") long avaliacaoId){
     Optional<Avaliacao> opt = this.getAvaliacao(avaliacaoId);
@@ -59,4 +57,22 @@ public class AvaliacaoController {
     }
     repository.deleteById(id);
   }
+
+  @GetMapping("/avaliacoes/{tipoItem}/{itemId}")
+  public List<Avaliacao> getAvaliacoesByFilmeId(@PathVariable Long itemId, @PathVariable String tipoItem) {
+    if ("filmes".equals(tipoItem)) {
+      return repository.findByItemIdAndItemType(itemId, Filme.class);
+  } else if ("livros".equals(tipoItem)) {
+      return repository.findByItemIdAndItemType(itemId, Livro.class);
+  } else if ("series".equals(tipoItem)) {
+      return repository.findByItemIdAndItemType(itemId, Serie.class);
+  } 
+    return repository.findByItemIdAndItemType(itemId, Filme.class);
+  }
+  
+  @PostMapping("/avaliacoes")
+  public Avaliacao postAvaliacao(@RequestBody Avaliacao avaliacao) {
+      return repository.save(avaliacao);
+  }
+
 }

@@ -72,4 +72,10 @@ public class Avaliacao {
 	public void setItem(Item item) {
 		this.item = item;
 	}
+
+	@Override
+	public String toString() {
+		return "Avaliacao [id=" + id + ", nota=" + nota + ", comentario=" + comentario + ", usuario=" + usuario
+				+ ", item=" + item + "]";
+	}
 }
