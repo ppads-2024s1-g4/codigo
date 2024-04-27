@@ -1,9 +1,11 @@
 var btnGerenciarFilmes = document.querySelector("#btnGerenciarFilmes");
 var sectionFilmes = document.querySelector("#sectionFilmes");
-var landing = document.querySelector("#landing");
+var landingPage = document.querySelector("#landingPage");
+var sectionCatalogo = document.querySelector("#services");
 
 btnGerenciarFilmes.addEventListener("click", function(){
-landing.style.display = "none";
+landingPage.style.display = "none";
 sectionFilmes.style.display = "block";
+sectionCatalogo.style.display = "none";
 
 })

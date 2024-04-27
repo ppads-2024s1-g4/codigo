@@ -9,7 +9,6 @@ const txtElencoPrincipalFilme = document.querySelector('#txtElencoFilme');
 const txtPaisFilme = document.querySelector('#txtPaisFilme');
 const txtAnoLancamentoFilme = document.querySelector('#txtAnoLancamentoFilme');
 const txtNotaFilme = document.querySelector('#txtNotaFilme');
-
 const btnNovoFilme = document.querySelector('#btnNovoFilme');
 const btnSalvarFilme = document.querySelector('#btnSalvarFilme');
 const btnApagarFilme = document.querySelector('#btnApagarFilme');
@@ -18,9 +17,12 @@ var criandoNovoFilme = false;
 
 inicializarFilme();
 
+window.onload = function() {
+    window.scrollTo(0, 0); // Força a página a rolar para o topo quando carregada
+}
+
 function voltarPagInicial(){
-    landing.style.display = "block";
-    sectionFilmes.style.display = "none";
+    window.location.reload();
 }
 
 function inicializarFilme() {
