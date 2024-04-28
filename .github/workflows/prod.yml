@@ -34,4 +34,4 @@ jobs:
     #         - name: Remove docker container
     #           run: docker rm -f indicai
     #         - name: Run docker container
-    #           run: docker run -d -p 25000:25000 --name indicai jeffersoncdantas/indicai
+    #           run: docker run -d -p 8080:8080 --name indicai jeffersoncdantas/indicai
