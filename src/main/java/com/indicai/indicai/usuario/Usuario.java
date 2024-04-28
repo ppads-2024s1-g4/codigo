@@ -1,26 +1,43 @@
 package com.indicai.indicai.usuario;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import java.io.Serializable;
 import java.util.List;
 import com.indicai.indicai.avaliacao.Avaliacao;
 
+@Getter @Setter @NoArgsConstructor
 @Entity
 @Table(name="usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name="username", nullable = false, unique= true, length = 50)
     private String username;
+
+    @Column(name="password", nullable = false, length = 300)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="role", nullable = false, length = 25)
+    private Role role = Role.ROLE_EMPLOYEE;
+
     private int anoNascimento;
     private String cidade;
     private String estado;
-    private boolean isGerente;
 
     @OneToMany(mappedBy = "usuario")
     private List<Avaliacao> avaliacoes;
@@ -28,90 +45,37 @@ public class Usuario {
     @ManyToMany
     private List<Usuario> amigos;
 
-    public Usuario(){
-
+    public enum Role{
+        ROLE_ADMIN, ROLE_EMPLOYEE
     }
 
-    public Usuario(Long id, String username, int anoNascimento, String cidade, String estado, boolean isGerente,
-            List<Avaliacao> avaliacoes) {
-        this.id = id;
-        this.username = username;
-        this.anoNascimento = anoNascimento;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.isGerente = isGerente;
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public int getAnoNascimento() {
-        return anoNascimento;
-    }
-
-    public void setAnoNascimento(int anoNascimento) {
-        this.anoNascimento = anoNascimento;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public boolean isGerente() {
-        return isGerente;
-    }
-
-    public void setGerente(boolean isGerente) {
-        this.isGerente = isGerente;
-    }
-
-    public List<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
-    }
-
-    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-        this.avaliacoes = avaliacoes;
-    }
-
-    public void adicionarAmigo(Usuario amigo) {
-        amigos.add(amigo);
-    }
-
-    public void adicionarAvaliacao(Avaliacao avaliacao) {
-        avaliacoes.add(avaliacao);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Usuario other = (Usuario) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", username=" + username + ", anoNascimento=" + anoNascimento + ", cidade="
-                + cidade + ", estado=" + estado + ", isGerente=" + isGerente + ", avaliacoes=" + avaliacoes + "]";
+        return "Usuario [id=" + id + "]";
     }
-
-    
-
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,11 +43,13 @@ public class SerieController {
   } 
 
   @PostMapping("/series")
+  @PreAuthorize("hasRole('ADMIN')")
   public Serie postSerie(@RequestBody Serie serie) {
       return repository.save(serie);
   }
 
   @PutMapping("/series/{serieId}")
+  @PreAuthorize("hasRole('ADMIN')")
   public Optional<Serie> updateSerie(@RequestBody Serie serie, @PathVariable(value= "serieId") long serieId){
     Optional<Serie> opt = this.getSerie(serieId);
     if (opt.isPresent() && opt.get().getId() == serie.getId()){
@@ -56,6 +59,7 @@ public class SerieController {
 
     
   @DeleteMapping(value = "/series/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public void deleteSerie(@PathVariable long id){
     if(repository.findById(id) == null){
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "O servidor não encontrou nada que corresponda ao request.");

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,11 +42,13 @@ public class FilmeController {
   } 
 
   @PostMapping("/filmes")
+  @PreAuthorize("hasRole('ADMIN')")
   public Filme postFilme(@RequestBody Filme filme) {
       return repository.save(filme);
   }
 
   @PutMapping("/filmes/{filmeId}")
+  @PreAuthorize("hasRole('ADMIN')")
   public Optional<Filme> updateFilme(@RequestBody Filme filme, @PathVariable(value= "filmeId") long filmeId){
     Optional<Filme> opt = this.getFilme(filmeId);
     if (opt.isPresent() && opt.get().getId() == filme.getId()){
@@ -54,6 +57,7 @@ public class FilmeController {
   }
 
   @DeleteMapping(value = "/filmes/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public void deleteFilme(@PathVariable long id){
     if(repository.findById(id) == null){
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "O servidor não encontrou nada que corresponda ao request.");

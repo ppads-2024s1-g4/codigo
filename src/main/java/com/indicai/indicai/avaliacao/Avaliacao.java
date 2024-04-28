@@ -10,6 +10,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor @AllArgsConstructor
+@Getter @Setter 
 @Entity
 @Table(name="avaliacoes")
 public class Avaliacao {
@@ -25,57 +32,4 @@ public class Avaliacao {
     @ManyToOne
     private Item item;
 
-	public Avaliacao() {}
-
-	public Avaliacao(Long id, int nota, String comentario) {
-		this.id = id;
-		this.nota = nota;
-		this.comentario = comentario;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getNota() {
-		return nota;
-	}
-
-	public void setNota(int nota) {
-		this.nota = nota;
-	}
-
-	public String getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
-
-	@Override
-	public String toString() {
-		return "Avaliacao [id=" + id + ", nota=" + nota + ", comentario=" + comentario + ", usuario=" + usuario
-				+ ", item=" + item + "]";
-	}
 }
