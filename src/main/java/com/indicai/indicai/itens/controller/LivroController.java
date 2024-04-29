@@ -43,13 +43,13 @@ public class LivroController {
   } 
 
   @PostMapping("/livros")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public Livro postLivro(@RequestBody Livro livro) {
       return repository.save(livro);
   }
 
   @PutMapping("/livros/{livroId}")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public Optional<Livro> updateLivro(@RequestBody Livro livro, @PathVariable(value= "livroId") long livroId){
     Optional<Livro> opt = this.getLivro(livroId);
     if (opt.isPresent() && opt.get().getId() == livro.getId()){
@@ -59,7 +59,7 @@ public class LivroController {
 
     
   @DeleteMapping(value = "/livros/{id}")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public void deleteLivro(@PathVariable long id){
     if(repository.findById(id) == null){
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "O servidor não encontrou nada que corresponda ao request.");

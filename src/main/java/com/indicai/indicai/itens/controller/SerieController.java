@@ -43,13 +43,13 @@ public class SerieController {
   } 
 
   @PostMapping("/series")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public Serie postSerie(@RequestBody Serie serie) {
       return repository.save(serie);
   }
 
   @PutMapping("/series/{serieId}")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public Optional<Serie> updateSerie(@RequestBody Serie serie, @PathVariable(value= "serieId") long serieId){
     Optional<Serie> opt = this.getSerie(serieId);
     if (opt.isPresent() && opt.get().getId() == serie.getId()){
@@ -59,7 +59,7 @@ public class SerieController {
 
     
   @DeleteMapping(value = "/series/{id}")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public void deleteSerie(@PathVariable long id){
     if(repository.findById(id) == null){
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "O servidor não encontrou nada que corresponda ao request.");
