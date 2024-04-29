@@ -8,14 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.List;
-import com.indicai.indicai.avaliacao.Avaliacao;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
@@ -38,9 +36,6 @@ public class Usuario implements Serializable {
     private int anoNascimento;
     private String cidade;
     private String estado;
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Avaliacao> avaliacoes;
 
     @ManyToMany
     private List<Usuario> amigos;

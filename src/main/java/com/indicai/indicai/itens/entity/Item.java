@@ -1,15 +1,15 @@
 package com.indicai.indicai.itens.entity;
-import java.util.List;
+//import java.util.List;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
-import com.indicai.indicai.avaliacao.Avaliacao;
+//import com.indicai.indicai.avaliacao.Avaliacao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "itens")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Item {
+public class Item {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -30,6 +30,6 @@ public abstract class Item {
     private int anoLancamento;
     private String urlCapa;
 
-    @OneToMany(mappedBy = "item")
-    private List<Avaliacao> avaliacoes;
+    //@OneToMany(mappedBy = "item")
+    //private List<Avaliacao> avaliacoes;
 }
