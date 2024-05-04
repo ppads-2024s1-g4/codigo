@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,7 +64,6 @@ public class FilmeController {
         filmeExistente.setElencoPrincipal(filme.getElencoPrincipal());
         filmeExistente.setPais(filme.getPais());
         filmeExistente.setUrlCapa(filme.getUrlCapa());
-        // Adicione outras propriedades que você precise atualizar
 
         return repository.save(filmeExistente); // Salva o filme existente com as alterações
       } else {

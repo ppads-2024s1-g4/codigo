@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,7 +65,6 @@ public class SerieController {
         serieExistente.setDiretor(serie.getDiretor());
         serieExistente.setElencoPrincipal(serie.getElencoPrincipal());
         serieExistente.setNumeroTemporadas(serie.getNumeroTemporadas());
-        // Adicione outras propriedades que você precise atualizar
 
         return repository.save(serieExistente); // Salva a série existente com as alterações
       } else {
